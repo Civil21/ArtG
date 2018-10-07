@@ -6,7 +6,7 @@ class ArtistsController < ApplicationController
 	end
 
 	def show
-
+		@arts = Art.where(artist_name: @artist.name)
 	end
 
 	def new
@@ -14,7 +14,12 @@ class ArtistsController < ApplicationController
 	end
 
 	def create
-		
+		@post=Post.create(post_params)
+  		if @post.save
+			redirect_to post_path(@post.id)  		
+    	else
+  		render 'new'
+  	end
 	end
 
 	def edit
@@ -33,6 +38,10 @@ class ArtistsController < ApplicationController
 
 	def get_artist
 		@artist = Artist.find_by(name: params[:id])
+	end
+
+	def artist_params
+		params.require(:artist).permit(:name,:description,:phone,:email)
 	end
 
 end

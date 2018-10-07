@@ -1,13 +1,28 @@
- <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+          <%=link_to root_path , class:"navbar-brand" do%>ArtG
+          <%end%>
+        </ul>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-    </ul>
-    <button class="btn btn-danger navbar-btn">Button</button>
-  </div>
-</nav> 
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+      <ul>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              <%if @artist %>
+                <%=@artist.name%>
+              <%else%>
+                Випадаючий список художників
+              <%end%>
+            </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <% Artist.all.each do |artist| %>
+              <p class="dropdown-item"> <%=link_to artist.name , artist_path(artist.name)%> </p>
+              <hr>
+            <%end%>
+          </div>
+        </li>
+      </ul>
+    </div>
+</nav>
