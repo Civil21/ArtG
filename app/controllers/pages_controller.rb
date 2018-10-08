@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
-  def index
-  end
+	before_action :aut_artist! 
+
+  	def index
+  		
+  	end
 end

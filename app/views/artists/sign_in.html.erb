@@ -1,0 +1,19 @@
+<%=form_for :artist, url: session_up_path, validate: true do |f|%>
+	<div class="form-group">
+		<%= f.label :email %>
+		<%= f.text_field :email, class: 'form-control',autofocus: true %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :password %>
+		<%= f.password_field :password, class: 'form-control' %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :password_confirmation %>
+		<%= f.password_field :password_confirmation, class: 'form-control' %>
+	</div>
+
+
+<%= f.submit :commit %>
+<%end%>

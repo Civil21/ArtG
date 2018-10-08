@@ -6,7 +6,7 @@
         </ul>
     </div>
 
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <div class="navbar-collapse">
       <ul>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -20,6 +20,11 @@
             <% Artist.all.each do |artist| %>
               <p class="dropdown-item"> <%=link_to artist.name , artist_path(artist.name)%> </p>
               <hr>
+            <%end%>
+            <%if !@current_artist %>
+              <%=link_to "Я художник" , sign_in_path%>
+            <%else%>
+              <%=@name%>
             <%end%>
           </div>
         </li>
