@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
   	private 
 
 	def aut_artist!
-		@current_artist = session[:current_artist]
-		@name = @current_artist.email
-		if(!@current_artist)
+		if(session[:current_artist_id]==nil)
 			redirect_to sign_in_path
+		else
+			@current_artist=Artist.find(session[:current_artist_id])
 		end
 	end
 end

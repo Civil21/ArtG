@@ -24,7 +24,7 @@
             <%if !@current_artist %>
               <%=link_to "Я художник" , sign_in_path%>
             <%else%>
-              <%=@name%>
+              <%=@current_artist.name%>
             <%end%>
           </div>
         </li>
