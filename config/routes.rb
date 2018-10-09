@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  
-  get 'arts/show'
 
   root to: 'pages#index'
 
   resources :artists, except:[:new,:crete,:delete] do
-  	resources :arts ,except:[:index,:delete]
+  	resources :arts ,except:[:delete]
   end
+  get "arts", to: "arts#index"
 
   get "artist_sign_in", to:"artists#sign_in", as:"sign_in"
   post "session_up", to:"artists#session_up"

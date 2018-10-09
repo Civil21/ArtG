@@ -1,31 +1,37 @@
 <header class="main_h">
 
-    <div class="row">
-        <%=link_to root_path , class:"logo" do%>ArtG
-          <%end%>
+<div class="row">
+  <%=link_to root_path , class:"logo" do%>ArtG<%end%>
+  <div class="mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-        <div class="mobile-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-        <nav>
-            <div class="navbar-collapse">
+  <div class="navbar-collapse">
+    <nav>
       <ul>
-      	<li><%=link_to "List arts"%></li>
+        <li><%=link_to "Список художників", artists_path()%></li>
+        <li><%=link_to "Список РОБІТ", arts_path()%></li>
         <li>
-                <%if !@current_artist %>
-              <%=link_to "Я художник" , sign_in_path%>
-            <%else%>
-              <%=@current_artist.name%>
-              <%=link_to "Exit", session_down_path, method: :delete%>
-              <%end%>
+          <%if @artist %>
+            <%=@artist.name%>
+          <%else%>
+            ХуДОЖНИК НЕ обраний
+          <%end%>
+        </li>
+        <li>
+          <%if !@current_artist %>
+            <%=link_to "Я художник" , sign_in_path%>
+          <%else%>
+            <%=@current_artist.name%>
+            <%=link_to "Exit", session_down_path, method: :delete%>
+          <%end%>
         </li>
       </ul>
-        </nav>
-
-    </div> <!-- / row -->
+    </nav>
+  </div>
+</div> <!-- / row -->
 
 </header>
 
