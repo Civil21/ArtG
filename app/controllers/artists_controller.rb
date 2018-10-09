@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
 	before_action :get_artist, only:[:show,:edit,:update,:destory]
-	before_action :aut_artist! 
+	#before_action :aut_artist!, except:[:session_up,:sign_in]
 
 	def index
 		@artists=Artist.all
@@ -11,6 +11,9 @@ class ArtistsController < ApplicationController
 	end
 
 	def sign_in
+		if(@current_artist)
+			redirect_to artist_path(@current_artist.name) 
+		end
 		#@artist=Artist.new
 	end
 
@@ -18,7 +21,7 @@ class ArtistsController < ApplicationController
 		if(!@current_artist)
 			@current_artist=Artist.find_by(email: params[:artist][:email],password: params[:artist][:password])
 			if(@current_artist)
-				session[:current_artist]= @current_artist
+				session[:current_artist_id]= @current_artist.id
 				redirect_to artist_path(@current_artist.name)  	
 			else
 				render 'sign_in'
@@ -31,6 +34,7 @@ class ArtistsController < ApplicationController
 	def session_down
 		reset_session
 		@current_artist = nil
+		redirect_back fallback_location: root_path
 	end
 
 	def new
