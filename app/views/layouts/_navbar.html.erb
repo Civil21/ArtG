@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+          <%=link_to root_path , class:"navbar-brand" do%>ArtG
+          <%end%>
+        </ul>
+    </div>
+
+    <div class="navbar-collapse">
+      <ul>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              <%if @artist %>
+                <%=@artist.name%>
+              <%else%>
+                Випадаючий список художників
+              <%end%>
+            </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <% Artist.all.each do |artist| %>
+              <p class="dropdown-item"> <%=link_to artist.name , artist_path(artist.name)%> </p>
+              <hr>
+            <%end%>
+            <%if !@current_artist %>
+              <%=link_to "Я художник" , sign_in_path%>
+            <%else%>
+              <%=@name%>
+            <%end%>
+          </div>
+        </li>
+      </ul>
+    </div>
+</nav>
