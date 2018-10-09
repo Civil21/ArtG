@@ -1,5 +1,5 @@
 <div class="row content">	
-	<%=form_for :artist, url: session_up_path do |f|%>
+	<%=form_for :artist, url: session_path do |f|%>
 		<div class="form-group">
 			<%= f.label :email %>
 			<%= f.text_field :email, class: 'form-control',autofocus: true %>

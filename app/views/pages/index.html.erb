@@ -22,10 +22,10 @@
         </li>
         <li>
           <%if !@current_artist %>
-            <%=link_to "Я художник" , sign_in_path%>
+            <%=link_to "Я художник" , session_path%>
           <%else%>
             <%=@current_artist.name%>
-            <%=link_to "Exit", session_down_path, method: :delete%>
+            <%=link_to "Exit", session_path, method: :delete%>
           <%end%>
         </li>
       </ul>

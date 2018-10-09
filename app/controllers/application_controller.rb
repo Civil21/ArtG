@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
 	def aut_artist!
 		if(!session[:current_artist_id])
-			redirect_to sign_in_path
+			redirect_to session_path
 		else
 			get_current_artist
 		end
