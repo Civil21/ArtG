@@ -7,7 +7,7 @@ class ArtistsController < ApplicationController
 	end
 
 	def show
-		@arts = Art.where(artist_name: @artist.name)
+		@arts = Art.where(artist_id: @artist.id)
 	end
 
 	def sign_in
@@ -58,14 +58,15 @@ class ArtistsController < ApplicationController
 		
 	end
 
-	def delete
-		
-	end
-
 	private 
 
 	def get_artist
 		@artist = Artist.find_by(name: params[:id])
+		if(!@artist)
+			@artist=Artist.find(params[:id])
+			pp params[:id]=@artist.name
+		end
+		render 
 	end
 
 	def artist_params

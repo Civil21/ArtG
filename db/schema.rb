@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20181007085154) do
   create_table "arts", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "artist_name"
+    t.string "artist_id"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#index'
 
-  resources :artists do
+  resources :artists, except:[:new,:crete,:delete] do
   	resources :arts ,except:[:index,:delete]
   end
 
