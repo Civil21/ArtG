@@ -1,34 +1,36 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-        <ul class="navbar-nav mr-auto">
-          <%=link_to root_path , class:"navbar-brand" do%>ArtG
-          <%end%>
-        </ul>
-    </div>
 
-    <div class="navbar-collapse">
+  
+  <header class="main">
+
+    <div class="row">
+        <%=link_to root_path , class:"logo" do%>ArtG
+          <%end%>
+
+        <div class="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav>
+            <div class="navbar-collapse">
       <ul>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        <li><%=link_to "List arts"%></li>
+        <li>
               <%if @artist %>
                 <%=@artist.name%>
               <%else%>
-                Випадаючий список художників
-              <%end%>
-            </a>
-          <div class="dropdown-menu dropdown-menu-right">
-            <% Artist.all.each do |artist| %>
-              <p class="dropdown-item"> <%=link_to artist.name , artist_path(artist.name)%> </p>
-              <hr>
-            <%end%>
-            <%if !@current_artist %>
+                <%if !@current_artist %>
               <%=link_to "Я художник" , sign_in_path%>
             <%else%>
               <%=@current_artist.name%>
               <%=link_to "Exit", session_down_path, method: :delete%>
             <%end%>
-          </div>
+              <%end%>
         </li>
       </ul>
-    </div>
-</nav>
+        </nav>
+
+    </div> <!-- / row -->
+
+</header>
