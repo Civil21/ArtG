@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#index'
 
-  resources :artists, except:[:new,:crete,:delete] do
+  resources :artists, except:[:delete] do
   	resources :arts ,except:[:delete]
   end
   get "arts", to: "arts#index"

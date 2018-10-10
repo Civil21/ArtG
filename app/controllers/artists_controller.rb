@@ -57,7 +57,11 @@ class ArtistsController < ApplicationController
 	end
 
 	def update
-		
+    	if @artist.id == @current_artist.id
+  			#Tag.new.all_tags_c(@art,params[:art][:all_tags])
+  			@artist.update(artist_params)
+    	end
+  		redirect_to artist_path(@artist.name)
 	end
 
 	private 
@@ -65,10 +69,8 @@ class ArtistsController < ApplicationController
 	def get_artist
 		@artist = Artist.find_by(name: params[:id])
 		if(!@artist)
-			@artist=Artist.find(params[:id])
-			pp params[:id]=@artist.name
+			@artist=Artist.find_by(id: params[:id])
 		end
-		render 
 	end
 
 	def artist_params
