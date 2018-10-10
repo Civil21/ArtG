@@ -6,3 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 	Artist.create(name: "Dius Olexander", email:"dius@example.com", password:"password", phone:"0663477974", link:"//")
+	CategoryGroup.create(name: "Фарби")
+	Category.create(name:"Олійні",category_group_id: 1)
+	Category.create(name:"Гуаш",category_group_id: 1)
+	Category.create(name:"Без фарб",category_group_id: 1)

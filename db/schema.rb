@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181010091552) do
+ActiveRecord::Schema.define(version: 20181010125230) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20181010091552) do
   create_table "arts", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "artist_id"
+    t.integer "artist_id"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,6 +38,19 @@ ActiveRecord::Schema.define(version: 20181010091552) do
     t.string "picture_content_type"
     t.integer "picture_file_size"
     t.datetime "picture_updated_at"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.integer "category_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "category_groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
