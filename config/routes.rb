@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   	resources :arts ,except:[:delete]
   end
   get "arts", to: "arts#index"
-
+  
   get "session", to:"artists#sign_in"
   post "session", to:"artists#session_up"
   delete "session", to:"artists#session_down"

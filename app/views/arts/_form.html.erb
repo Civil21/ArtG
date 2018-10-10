@@ -4,6 +4,11 @@
 	<%= f.text_field :name, class: 'form-control',autofocus: true %>
 </div>
 
+<div class="custom-file">
+	<%= f.file_field :picture, class:"custom-file-input", id:"customFile" %>
+    <%=f.label :picture, class:"custom-file-label" %>
+</div>
+
 <div class="form-group">
 	<%= f.label :description %>
 	<%= f.text_area :description, class: 'form-control'%>
