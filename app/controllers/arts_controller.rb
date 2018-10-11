@@ -19,11 +19,18 @@ class ArtsController < ApplicationController
 
 	def new
     @navbar_off = true	
+    @groups = CategoryGroup.all
+    @categories = []
+    @groups.each{|group|
+      @categories[group.id] = Category.where(category_group_id: group.id)
+      }
   end
 
   def create
   	params[:art][:artist_id]=@current_artist.id
+    @categories = Category.find(params[:categories_ids])
   	@art=Art.create(art_params)
+    @art.categories = @categories
   	if @art.save
 		redirect_to artist_art_path(@artist.name,@art.id)  		
     else
@@ -37,7 +44,9 @@ class ArtsController < ApplicationController
 
   def update
     if @art.artist.id == @current_artist.id
-  		#Tag.new.all_tags_c(@art,params[:art][:all_tags])
+      @categories = Category.find(params[:categories_ids])
+      @art.categories.clear
+      @art.categories = @categories
   		@art.update(art_params)
     end
   	redirect_to artist_art_path(@artist.name,@art.id)
