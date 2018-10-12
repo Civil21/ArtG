@@ -12,7 +12,6 @@ class ArtistsController < ApplicationController
 
 	def sign_in
 		@navbar_off = true
-
 		if(@current_artist)
 			redirect_to artist_path(@current_artist.name) 
 		end
