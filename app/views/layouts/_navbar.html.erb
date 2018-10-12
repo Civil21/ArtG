@@ -1,34 +1,36 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-        <ul class="navbar-nav mr-auto">
-          <%=link_to root_path , class:"navbar-brand" do%>ArtG
-          <%end%>
-        </ul>
-    </div>
+<header class="main">
 
-    <div class="navbar-collapse">
+<div class="row">
+  <%=link_to root_path , class:"logo" do%>ArtG<%end%>
+  <div class="mobile-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="navbar-collapse">
+    <nav>
       <ul>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              <%if @artist %>
-                <%=@artist.name%>
-              <%else%>
-                Випадаючий список художників
-              <%end%>
-            </a>
-          <div class="dropdown-menu dropdown-menu-right">
-            <% Artist.all.each do |artist| %>
-              <p class="dropdown-item"> <%=link_to artist.name , artist_path(artist.name)%> </p>
-              <hr>
-            <%end%>
-            <%if !@current_artist %>
-              <%=link_to "Я художник" , sign_in_path%>
-            <%else%>
-              <%=@current_artist.name%>
-              <%=link_to "Exit", session_down_path, method: :delete%>
-            <%end%>
-          </div>
+        <li><%=link_to "Список художників", artists_path()%></li>
+        <li><%=link_to "Список РОБІТ", arts_path()%></li>
+        <li>
+          <%if @artist %>
+            <%=link_to @artist.name, artist_arts_path(@artist.name)%>
+          <%else%>
+            ХуДОЖНИК НЕ обраний
+          <%end%>
+        </li>
+        <li>
+          <%if !@current_artist %>
+            <%=link_to "Я художник" , session_path%>
+          <%else%>
+            <%=@current_artist.name%>
+            <%=link_to "Exit", session_path, method: :delete%>
+          <%end%>
         </li>
       </ul>
-    </div>
-</nav>
+    </nav>
+  </div>
+</div> <!-- / row -->
+
+</header>

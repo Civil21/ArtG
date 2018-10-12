@@ -3,7 +3,7 @@ class CreateArts < ActiveRecord::Migration[5.1]
     create_table :arts do |t|
       t.string :name
       t.string :description
-      t.string :artist_name
+      t.string :artist_id
       t.float :price
 
       t.timestamps

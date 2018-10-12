@@ -9,7 +9,9 @@
   </head>
 
   <body>
-  	<%=render "layouts/navbar" %>
+  	<%if !@navbar_off%>
+  		<%=render "layouts/navbar" %>
+  	<%end%>
     <%= yield %>
   </body>
 </html>

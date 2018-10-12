@@ -7,10 +7,11 @@ class ArtistsController < ApplicationController
 	end
 
 	def show
-		@arts = Art.where(artist_name: @artist.name)
+		@arts = Art.where(artist_id: @artist.id)
 	end
 
 	def sign_in
+		@navbar_off = true
 		if(@current_artist)
 			redirect_to artist_path(@current_artist.name) 
 		end
@@ -38,7 +39,7 @@ class ArtistsController < ApplicationController
 	end
 
 	def new
-
+		@navbar_off = true
 	end
 
 	def create
@@ -58,14 +59,15 @@ class ArtistsController < ApplicationController
 		
 	end
 
-	def delete
-		
-	end
-
 	private 
 
 	def get_artist
 		@artist = Artist.find_by(name: params[:id])
+		if(!@artist)
+			@artist=Artist.find(params[:id])
+			pp params[:id]=@artist.name
+		end
+		render 
 	end
 
 	def artist_params
