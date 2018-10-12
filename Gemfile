@@ -33,8 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# для фотографій і зображень
-gem 'carrierwave', '~> 1.0'
+#avatars
+gem "paperclip", "~> 6.0.0"
 
 gem 'jquery-rails'
 

@@ -1,0 +1,3 @@
+<%= form_for @artist, url: artist_path(@artist.name), method: :patch do  |f| %>
+	<%= render  "artists/form", f:f%>
+<%end%>
