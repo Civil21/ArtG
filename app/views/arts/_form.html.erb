@@ -24,4 +24,15 @@
 	<%= f.label @current_artist.name, class: 'form-control'%>
 </div>
 
+<div>
+	<% @groups.each do |group| %>
+		<p><%=group.name%>:</p>
+		<% @categories[group.id].each do |category|%>
+			<%=check_box_tag('categories_ids[]',category.id)%>
+			<%=category.name%>
+		<%end%>
+		<hr>
+	<%end%>
+</div>
+
 <%= f.submit :commit %>
