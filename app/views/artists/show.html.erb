@@ -1,9 +1,13 @@
 <div class="row content">
 <h1><%=@artist.name%></h1>
-<h2>Список картин:</h2>
+<h3>Список картин:</h3>
 <% if @arts%>
+<div class="col-md-4 .col-xs-6">
 	<%=render @arts%>
+</div>
 <%else%>
 	Ще не опублікував роботи
 <%end%>
 </div>
+
+
